@@ -1,86 +1,130 @@
-/* Ultimate Moving Starfield – Works Everywhere */
-* { margin:0; padding:0; box-sizing:border-box; }
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Exo+2:wght@300;400;600&display=swap');
 
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #000 url('https://i.ytimg.com/vi/xP-96rD5zqY/maxresdefault.jpg') center center fixed;
+    background: #000 url('https://thumbs.dreamstime.com/b/futuristic-digital-network-glowing-blue-red-nodes-holographic-cyber-theme-futuristic-digital-network-glowing-blue-395948862.jpg') center center fixed;
     background-size: cover;
-    color: #e0e7ff;
+    color: #e0f0ff;
+    font-family: 'Exo 2', sans-serif;
+    margin: 0;
     min-height: 100vh;
-    overflow-x: hidden;
-    position: relative;
 }
 
-/* Subtle moving parallax effect (stars "zoom" slowly) */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: inherit;
-    background-size: cover;
-    animation: slowZoom 120s linear infinite;
-    opacity: 0.6;
-    z-index: -1;
-}
-
-@keyframes slowZoom {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.3); }
-}
-
-/* Enhanced nebula glow overlay */
-body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(circle at 30% 70%, rgba(120,50,200,0.3), transparent 60%),
-                radial-gradient(circle at 70% 30%, rgba(0,180,255,0.25), transparent 60%);
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* Make sure your content stays above the stars */
-header, section, footer { position: relative; z-index: 2; }
-
-/* Keep the rest of your fancy styling (header glow, cards, etc.) */
 header {
     text-align: center;
-    padding: 120px 20px 80px;
-    background: linear-gradient(to bottom, rgba(10,5,60,0.9), transparent);
+    padding: 140px 20px 100px;
+    background: linear-gradient(to bottom, rgba(0,0,30,0.8), transparent);
 }
+
 header h1 {
-    font-size: 4rem;
-    background: linear-gradient(90deg, #00ddeb, #a78bff, #ff6ec7);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 5rem;
+    background: linear-gradient(90deg, #00ffff, #ff00ff, #00ffcc);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: 0 0 30px rgba(167,139,255,0.6);
-    animation: glow 4s ease-in-out infinite alternate;
+    text-shadow: 0 0 40px rgba(0,255,255,0.8);
+    animation: pulse 6s infinite;
 }
-@keyframes glow { 0%{text-shadow:0 0 20px #a78bff;} 100%{text-shadow:0 0 40px #00ddeb;} }
 
-section {
-    max-width: 1100px;
-    margin: 60px auto;
-    padding: 40px;
-    background: rgba(20,20,50,0.7);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
-    border: 1px solid rgba(100,150,255,0.4);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+header p {
+    font-size: 1.8rem;
+    text-shadow: 0 0 20px rgba(0,255,255,0.5);
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    background: rgba(10, 15, 40, 0.6);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    border: 1px solid rgba(0,255,255,0.4);
+    padding: 60px;
+    margin: 40px 0;
+    box-shadow: 0 0 60px rgba(0,255,255,0.3);
+    transition: transform 0.5s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: #00ffff;
+    text-align: center;
+    text-shadow: 0 0 20px #00ffff;
+    margin-bottom: 40px;
+}
+
+.intro, p {
+    font-size: 1.3rem;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 40px;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
 }
 
 .gallery img {
-    width: 380px;
+    width: 420px;
     max-width: 100%;
-    border-radius: 15px;
-    border: 2px solid rgba(100,150,255,0.5);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-    transition: 0.4s;
-}
-.gallery img:hover {
-    transform: translateY(-15px) scale(1.03);
-    box-shadow: 0 25px 60px rgba(167,139,255,0.8);
+    border-radius: 20px;
+    border: 3px solid rgba(0,255,255,0.6);
+    box-shadow: 0 0 40px rgba(0,255,255,0.5);
+    transition: 0.5s;
 }
 
-/* (keep the rest of your existing rules for h2, footer, responsive, etc.) */
+.gallery img:hover {
+    transform: scale(1.05) translateY(-20px);
+    box-shadow: 0 0 80px rgba(255,0,255,0.8);
+}
+
+ul {
+    font-size: 1.3rem;
+    max-width: 800px;
+    margin: 40px auto;
+    text-align: left;
+}
+
+ul li {
+    margin: 20px 0;
+    padding-left: 10px;
+}
+
+.cta a {
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #ff00ff;
+    text-shadow: 0 0 20px #ff00ff;
+}
+
+footer {
+    text-align: center;
+    padding: 60px;
+    background: rgba(0,0,30,0.7);
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+@keyframes pulse {
+    0%, 100% { text-shadow: 0 0 40px rgba(0,255,255,0.8); }
+    50% { text-shadow: 0 0 60px rgba(255,0,255,1); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 { font-size: 3.5rem; }
+    .card { padding: 40px; }
+}
