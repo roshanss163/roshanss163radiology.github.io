@@ -1,4 +1,4 @@
-/* Space Theme — Fancy Radiology Portfolio Theme */
+/* Epic Space Theme with Animated Moving Starfield */
 * {
     margin: 0;
     padding: 0;
@@ -7,8 +7,7 @@
 
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    background-attachment: fixed;
+    background: #000; /* Solid black base for stars */
     color: #e0e7ff;
     line-height: 1.7;
     min-height: 100vh;
@@ -16,37 +15,67 @@ body {
     position: relative;
 }
 
-/* Animated starry background */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: url('https://assets.codepen.io/1538479/stars.png') repeat;
-    opacity: 0.4;
-    z-index: -2;
-    animation: drift 200s linear infinite;
-}
-
-@keyframes drift {
-    from { background-position: 0 0; }
-    to { background-position: 10000px 10000px; }
-}
-
-/* Glowing nebula overlay */
+/* Nebula glow overlay */
 body::after {
     content: '';
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
     background: radial-gradient(circle at 30% 70%, rgba(100, 50, 200, 0.3), transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(0, 200, 255, 0.25), transparent 50%);
-    z-index: -1;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Star layers for parallax moving effect */
+#stars, #stars2, #stars3 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+#stars {
+    background: transparent;
+    box-shadow: 
+        1500px 200px #fff, 300px 800px #fff, 800px 1500px #fff, /* Add more manually or generate */
+        /* Full list of ~1000 stars would be too long here – use the shortened version below or generate more */
+        100px 100px #fff, 200px 300px #fff, 400px 600px #fff, 700px 900px #fff,
+        1200px 400px #fff, 900px 1200px #fff, 600px 200px #fff, 1300px 700px #fff;
+    animation: moveStars 100s linear infinite;
+}
+
+#stars2 {
+    background: transparent;
+    box-shadow: /* Similar but different positions for medium layer */
+        50px 150px #fff, 250px 450px #fff, 550px 850px #fff, 950px 1250px #fff,
+        150px 650px #fff, 650px 1050px #fff, 1050px 350px #fff, 350px 950px #fff;
+    animation: moveStars 150s linear infinite;
+}
+
+#stars3 {
+    background: transparent;
+    box-shadow: /* Far layer – smaller/fewer stars */
+        200px 400px #fff, 600px 800px #fff, 1000px 1200px #fff, 400px 100px #fff;
+    animation: moveStars 200s linear infinite;
+}
+
+@keyframes moveStars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-2000px); } /* Stars scroll upward for forward motion */
+}
+
+/* Content on top of stars */
+header, section, footer {
+    position: relative;
+    z-index: 2;
 }
 
 header {
     text-align: center;
     padding: 100px 20px 80px;
     background: linear-gradient(to bottom, rgba(10, 5, 60, 0.9), transparent);
-    position: relative;
 }
 
 header h1 {
@@ -149,6 +178,8 @@ footer {
     background: rgba(10, 5, 40, 0.8);
     margin-top: 80px;
     font-size: 1.1rem;
+    position: relative;
+    z-index: 2;
 }
 
 /* Responsive */
