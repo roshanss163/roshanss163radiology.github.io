@@ -1,20 +1,80 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Exo+2:wght@300;400;600&display=swap');
 
+html {
+    height: 100%;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    overflow: hidden;
+}
+
 body {
-    background: #000 url('https://www.shutterstock.com/shutterstock/videos/1104689071/thumb/1.jpg?ip=x480') center center fixed;
-    background-size: cover;
     color: #e0f0ff;
     font-family: 'Exo 2', sans-serif;
     margin: 0;
     min-height: 100vh;
+    position: relative;
 }
 
+/* Parallax Moving Stars */
+#stars, #stars2, #stars3 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+#stars {
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow: 
+        /* Near layer - many small fast stars (copy-pasted from popular examples for density) */
+        1602px 661px #FFF, 1779px 795px #FFF, 1154px 812px #FFF, 1328px 800px #FFF, 1262px 1251px #FFF, 
+        1976px 432px #FFF, 1650px 1853px #FFF, 1001px 468px #FFF, 609px 405px #FFF, 1842px 1576px #FFF,
+        /* Add hundreds more - this is a starter set; it looks great even with these */
+        742px 1365px #FFF, 321px 1286px #FFF, 46px 1435px #FFF, 1848px 508px #FFF, 1101px 240px #FFF,
+        1974px 1952px #FFF, 1072px 406px #FFF, 697px 1196px #FFF, 988px 256px #FFF, 501px 582px #FFF;
+    animation: animStar 50s linear infinite;
+}
+
+#stars2 {
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow: 
+        /* Medium layer - fewer medium stars */
+        100px 400px #FFF, 600px 900px #FFF, 200px 1200px #FFF, 800px 200px #FFF, 1300px 600px #FFF,
+        400px 1400px #FFF, 1100px 800px #FFF, 500px 100px #FFF, 1400px 1100px #FFF, 700px 300px #FFF;
+    animation: animStar 100s linear infinite;
+}
+
+#stars3 {
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    box-shadow: 
+        /* Far layer - few large slow stars */
+        300px 600px #FFF, 900px 1200px #FFF, 100px 800px #FFF, 1200px 200px #FFF, 600px 1400px #FFF;
+    animation: animStar 150s linear infinite;
+}
+
+@keyframes animStar {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-2000px); }
+}
+
+/* Your existing styles (header, card, etc.) - content sits on top */
 header {
     text-align: center;
     padding: 140px 20px 100px;
     background: linear-gradient(to bottom, rgba(0,0,30,0.8), transparent);
+    position: relative;
+    z-index: 2;
 }
 
+/* Keep all your other rules exactly as they were */
 header h1 {
     font-family: 'Orbitron', sans-serif;
     font-size: 5rem;
@@ -25,20 +85,19 @@ header h1 {
     text-shadow: 0 0 40px rgba(0,255,255,0.8);
     animation: pulse 6s infinite;
 }
-
 header p {
     font-size: 1.8rem;
     text-shadow: 0 0 20px rgba(0,255,255,0.5);
     max-width: 800px;
     margin: 20px auto;
 }
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    position: relative;
+    z-index: 2;
 }
-
 .card {
     background: rgba(10, 15, 40, 0.6);
     backdrop-filter: blur(15px);
@@ -49,11 +108,9 @@ header p {
     box-shadow: 0 0 60px rgba(0,255,255,0.3);
     transition: transform 0.5s;
 }
-
 .card:hover {
     transform: translateY(-10px);
 }
-
 h2, h3 {
     font-family: 'Orbitron', sans-serif;
     color: #00ffff;
@@ -61,21 +118,18 @@ h2, h3 {
     text-shadow: 0 0 20px #00ffff;
     margin-bottom: 40px;
 }
-
 .intro, p {
     font-size: 1.3rem;
     text-align: center;
     max-width: 900px;
     margin: 0 auto 40px;
 }
-
 .gallery {
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
     justify-content: center;
 }
-
 .gallery img {
     width: 420px;
     max-width: 100%;
@@ -84,24 +138,20 @@ h2, h3 {
     box-shadow: 0 0 40px rgba(0,255,255,0.5);
     transition: 0.5s;
 }
-
 .gallery img:hover {
     transform: scale(1.05) translateY(-20px);
     box-shadow: 0 0 80px rgba(255,0,255,0.8);
 }
-
 ul {
     font-size: 1.3rem;
     max-width: 800px;
     margin: 40px auto;
     text-align: left;
 }
-
 ul li {
     margin: 20px 0;
     padding-left: 10px;
 }
-
 .cta a {
     display: block;
     text-align: center;
@@ -109,20 +159,19 @@ ul li {
     color: #ff00ff;
     text-shadow: 0 0 20px #ff00ff;
 }
-
 footer {
     text-align: center;
     padding: 60px;
     background: rgba(0,0,30,0.7);
     font-size: 1.2rem;
     text-shadow: 0 0 10px #00ffff;
+    position: relative;
+    z-index: 2;
 }
-
 @keyframes pulse {
     0%, 100% { text-shadow: 0 0 40px rgba(0,255,255,0.8); }
     50% { text-shadow: 0 0 60px rgba(255,0,255,1); }
 }
-
 /* Responsive */
 @media (max-width: 768px) {
     header h1 { font-size: 3.5rem; }
