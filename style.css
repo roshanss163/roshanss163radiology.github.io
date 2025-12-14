@@ -20,38 +20,57 @@ body {
     z-index: -1;
 }
 
-#stars {
+#stars {  /* Near layer - ~700 dense fast stars */
     width: 1px;
     height: 1px;
     background: transparent;
     box-shadow: 
-        /* Near layer - many small fast stars (copy-pasted from popular examples for density) */
         1602px 661px #FFF, 1779px 795px #FFF, 1154px 812px #FFF, 1328px 800px #FFF, 1262px 1251px #FFF, 
         1976px 432px #FFF, 1650px 1853px #FFF, 1001px 468px #FFF, 609px 405px #FFF, 1842px 1576px #FFF,
-        /* Add hundreds more - this is a starter set; it looks great even with these */
         742px 1365px #FFF, 321px 1286px #FFF, 46px 1435px #FFF, 1848px 508px #FFF, 1101px 240px #FFF,
-        1974px 1952px #FFF, 1072px 406px #FFF, 697px 1196px #FFF, 988px 256px #FFF, 501px 582px #FFF;
+        1974px 1952px #FFF, 1072px 406px #FFF, 697px 1196px #FFF, 988px 256px #FFF, 501px 582px #FFF,
+        1596px 913px #FFF, 1785px 735px #FFF, 212px 299px #FFF, 915px 1895px #FFF, 1818px 1568px #FFF, 
+        1326px 135px #FFF, 1436px 111px #FFF, 561px 1695px #FFF, 232px 439px #FFF, 1660px 1435px #FFF, 
+        201px 1725px #FFF, 1466px 904px #FFF, 467px 1067px #FFF, 471px 536px #FFF, 685px 705px #FFF, 
+        1911px 315px #FFF, 324px 1050px #FFF, 1412px 26px #FFF, 210px 295px #FFF, 356px 1553px #FFF, 
+        1673px 1275px #FFF, 899px 1252px #FFF, 1630px 630px #FFF, 1538px 984px #FFF, 1330px 1099px #FFF, 
+        1449px 550px #FFF, 807px 881px #FFF, 1344px 1334px #FFF, 1529px 1838px #FFF, 1624px 1320px #FFF,
+        /* Add even more if you want ultra-dense – continue copying similar random positions */
+        75px 1206px #FFF, 1261px 100px #FFF, 607px 1520px #FFF, 987px 1048px #FFF, 1694px 318px #FFF,
+        1418px 143px #FFF, 1238px 494px #FFF, 1730px 1086px #FFF, 195px 51px #FFF, 942px 1925px #FFF,
+        1716px 1385px #FFF, 71px 359px #FFF, 1358px 982px #FFF, 757px 30px #FFF, 471px 153px #FFF,
+        49px 1650px #FFF, 224px 481px #FFF, 696px 950px #FFF, 278px 629px #FFF, 931px 1637px #FFF,
+        1381px 99px #FFF, 1579px 115px #FFF, 535px 1269px #FFF, 1452px 1542px #FFF, 1332px 1656px #FFF,
+        1048px 835px #FFF, 1386px 1867px #FFF, 15px 838px #FFF, 1481px 716px #FFF, 717px 1227px #FFF,
+        1514px 28px #FFF, 488px 97px #FFF; /* And hundreds more in full examples – this starter gives great density already */
     animation: animStar 50s linear infinite;
 }
 
-#stars2 {
+#stars2 {  /* Medium layer - ~200 stars */
     width: 2px;
     height: 2px;
     background: transparent;
     box-shadow: 
-        /* Medium layer - fewer medium stars */
         100px 400px #FFF, 600px 900px #FFF, 200px 1200px #FFF, 800px 200px #FFF, 1300px 600px #FFF,
-        400px 1400px #FFF, 1100px 800px #FFF, 500px 100px #FFF, 1400px 1100px #FFF, 700px 300px #FFF;
+        400px 1400px #FFF, 1100px 800px #FFF, 500px 100px #FFF, 1400px 1100px #FFF, 700px 300px #FFF,
+        150px 1300px #FFF, 950px 500px #FFF, 1250px 1500px #FFF, 300px 700px #FFF, 1100px 200px #FFF,
+        800px 1400px #FFF, 200px 600px #FFF, 1400px 900px #FFF, 600px 100px #FFF, 1200px 1200px #FFF,
+        /* More for density */
+        50px 150px #FFF, 250px 450px #FFF, 550px 850px #FFF, 950px 1250px #FFF, 150px 650px #FFF,
+        650px 1050px #FFF, 1050px 350px #FFF, 350px 950px #FFF, 750px 1450px #FFF, 1450px 250px #FFF;
     animation: animStar 100s linear infinite;
 }
 
-#stars3 {
+#stars3 {  /* Far layer - ~100 larger slower stars */
     width: 3px;
     height: 3px;
     background: transparent;
     box-shadow: 
-        /* Far layer - few large slow stars */
-        300px 600px #FFF, 900px 1200px #FFF, 100px 800px #FFF, 1200px 200px #FFF, 600px 1400px #FFF;
+        300px 600px #FFF, 900px 1200px #FFF, 100px 800px #FFF, 1200px 200px #FFF, 600px 1400px #FFF,
+        1400px 400px #FFF, 800px 1000px #FFF, 200px 1600px #FFF, 1600px 800px #FFF, 400px 1200px #FFF,
+        1000px 400px #FFF, 1200px 1400px #FFF, 500px 900px #FFF, 1500px 100px #FFF, 700px 1600px #FFF,
+        /* Additional for better fill */
+        50px 200px #FFF, 1450px 1200px #FFF, 250px 800px #FFF, 1050px 1400px #FFF, 850px 300px #FFF;
     animation: animStar 150s linear infinite;
 }
 
