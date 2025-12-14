@@ -1,191 +1,86 @@
-/* Epic Space Theme with Animated Moving Starfield */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Ultimate Moving Starfield – Works Everywhere */
+* { margin:0; padding:0; box-sizing:border-box; }
 
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: #000; /* Solid black base for stars */
+    background: #000 url('https://i.ytimg.com/vi/xP-96rD5zqY/maxresdefault.jpg') center center fixed;
+    background-size: cover;
     color: #e0e7ff;
-    line-height: 1.7;
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
 }
 
-/* Nebula glow overlay */
-body::after {
-    content: '';
+/* Subtle moving parallax effect (stars "zoom" slowly) */
+body::before {
+    content: "";
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(circle at 30% 70%, rgba(100, 50, 200, 0.3), transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(0, 200, 255, 0.25), transparent 50%);
+    background: inherit;
+    background-size: cover;
+    animation: slowZoom 120s linear infinite;
+    opacity: 0.6;
+    z-index: -1;
+}
+
+@keyframes slowZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.3); }
+}
+
+/* Enhanced nebula glow overlay */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 30% 70%, rgba(120,50,200,0.3), transparent 60%),
+                radial-gradient(circle at 70% 30%, rgba(0,180,255,0.25), transparent 60%);
     pointer-events: none;
     z-index: 1;
 }
 
-/* Star layers for parallax moving effect */
-#stars, #stars2, #stars3 {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-}
+/* Make sure your content stays above the stars */
+header, section, footer { position: relative; z-index: 2; }
 
-#stars {
-    background: transparent;
-    box-shadow: 
-        1500px 200px #fff, 300px 800px #fff, 800px 1500px #fff, /* Add more manually or generate */
-        /* Full list of ~1000 stars would be too long here – use the shortened version below or generate more */
-        100px 100px #fff, 200px 300px #fff, 400px 600px #fff, 700px 900px #fff,
-        1200px 400px #fff, 900px 1200px #fff, 600px 200px #fff, 1300px 700px #fff;
-    animation: moveStars 100s linear infinite;
-}
-
-#stars2 {
-    background: transparent;
-    box-shadow: /* Similar but different positions for medium layer */
-        50px 150px #fff, 250px 450px #fff, 550px 850px #fff, 950px 1250px #fff,
-        150px 650px #fff, 650px 1050px #fff, 1050px 350px #fff, 350px 950px #fff;
-    animation: moveStars 150s linear infinite;
-}
-
-#stars3 {
-    background: transparent;
-    box-shadow: /* Far layer – smaller/fewer stars */
-        200px 400px #fff, 600px 800px #fff, 1000px 1200px #fff, 400px 100px #fff;
-    animation: moveStars 200s linear infinite;
-}
-
-@keyframes moveStars {
-    from { transform: translateY(0); }
-    to { transform: translateY(-2000px); } /* Stars scroll upward for forward motion */
-}
-
-/* Content on top of stars */
-header, section, footer {
-    position: relative;
-    z-index: 2;
-}
-
+/* Keep the rest of your fancy styling (header glow, cards, etc.) */
 header {
     text-align: center;
-    padding: 100px 20px 80px;
-    background: linear-gradient(to bottom, rgba(10, 5, 60, 0.9), transparent);
+    padding: 120px 20px 80px;
+    background: linear-gradient(to bottom, rgba(10,5,60,0.9), transparent);
 }
-
 header h1 {
     font-size: 4rem;
     background: linear-gradient(90deg, #00ddeb, #a78bff, #ff6ec7);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: 0 0 30px rgba(167, 139, 255, 0.6);
+    text-shadow: 0 0 30px rgba(167,139,255,0.6);
     animation: glow 4s ease-in-out infinite alternate;
 }
-
-header p {
-    font-size: 1.4rem;
-    opacity: 0.9;
-    margin-top: 10px;
-}
-
-@keyframes glow {
-    from { text-shadow: 0 0 20px rgba(167, 139, 255, 0.6); }
-    to { text-shadow: 0 0 40px rgba(0, 221, 235, 0.8); }
-}
+@keyframes glow { 0%{text-shadow:0 0 20px #a78bff;} 100%{text-shadow:0 0 40px #00ddeb;} }
 
 section {
     max-width: 1100px;
     margin: 60px auto;
     padding: 40px;
-    background: rgba(20, 20, 50, 0.65);
-    backdrop-filter: blur(10px);
+    background: rgba(20,20,50,0.7);
+    backdrop-filter: blur(12px);
     border-radius: 20px;
-    border: 1px solid rgba(100, 150, 255, 0.3);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-}
-
-h2, h3 {
-    color: #a78bff;
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2.2rem;
-    position: relative;
-}
-
-h2::after {
-    content: '';
-    display: block;
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, #00ddeb, #a78bff);
-    margin: 15px auto;
-    border-radius: 2px;
-}
-
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-    margin: 50px 0;
+    border: 1px solid rgba(100,150,255,0.4);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
 }
 
 .gallery img {
-    max-width: 100%;
     width: 380px;
+    max-width: 100%;
     border-radius: 15px;
-    border: 2px solid rgba(100, 150, 255, 0.5);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-    transition: all 0.4s ease;
+    border: 2px solid rgba(100,150,255,0.5);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    transition: 0.4s;
 }
-
 .gallery img:hover {
     transform: translateY(-15px) scale(1.03);
-    box-shadow: 0 20px 50px rgba(167, 139, 255, 0.7);
-    border-color: #a78bff;
+    box-shadow: 0 25px 60px rgba(167,139,255,0.8);
 }
 
-ul {
-    padding-left: 30px;
-    font-size: 1.15rem;
-}
-
-ul li {
-    margin: 12px 0;
-}
-
-a {
-    color: #00ddeb;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-a:hover {
-    color: #a78bff;
-    text-shadow: 0 0 10px currentColor;
-}
-
-footer {
-    text-align: center;
-    padding: 40px;
-    background: rgba(10, 5, 40, 0.8);
-    margin-top: 80px;
-    font-size: 1.1rem;
-    position: relative;
-    z-index: 2;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    header h1 { font-size: 2.8rem; }
-    header { padding: 80px 15px; }
-    section { margin: 30px 15px; padding: 25px; }
-    .gallery img { width: 100%; }
-}
+/* (keep the rest of your existing rules for h2, footer, responsive, etc.) */
